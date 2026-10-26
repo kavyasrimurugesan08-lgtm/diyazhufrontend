@@ -14,11 +14,12 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 
 import { api, getAuthToken, setAuthToken } from './api';
+import { DEFAULT_GALLERY } from './defaultData';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('home');
   const [services, setServices] = useState([]);
-  const [gallery, setGallery] = useState([]);
+  const [gallery, setGallery] = useState(DEFAULT_GALLERY);
   const [settings, setSettings] = useState(null);
 
   // Auth state
@@ -64,9 +65,9 @@ export default function App() {
         api.getSettings().catch(() => ({ settings: {} }))
       ]);
 
-      if (servicesRes.services) setServices(servicesRes.services);
-      if (galleryRes.gallery) setGallery(galleryRes.gallery);
-      if (settingsRes.settings) setSettings(settingsRes.settings);
+      if (servicesRes.services && servicesRes.services.length > 0) setServices(servicesRes.services);
+      if (galleryRes.gallery && galleryRes.gallery.length > 0) setGallery(galleryRes.gallery);
+      if (settingsRes.settings && Object.keys(settingsRes.settings).length > 0) setSettings(settingsRes.settings);
     } catch (err) {
       console.warn('Initial data load warning:', err.message);
     }

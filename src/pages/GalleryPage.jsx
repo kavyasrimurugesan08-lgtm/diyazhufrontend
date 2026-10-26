@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Sparkles, Eye, Maximize2, X, Calendar, Info } from 'lucide-react';
+import { Sparkles, Eye, Maximize2, X, Calendar } from 'lucide-react';
+import { DEFAULT_GALLERY } from '../defaultData';
 
 export default function GalleryPage({ gallery, openBookingModal }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeLightbox, setActiveLightbox] = useState(null);
+
+  const displayList = gallery && gallery.length > 0 ? gallery : DEFAULT_GALLERY;
 
   const categories = [
     'All',
@@ -13,9 +16,9 @@ export default function GalleryPage({ gallery, openBookingModal }) {
     'Transformations'
   ];
 
-  const filteredGallery = gallery
-    ? gallery.filter((item) => (selectedCategory === 'All' ? true : item.category === selectedCategory))
-    : [];
+  const filteredGallery = displayList.filter(
+    (item) => (selectedCategory === 'All' ? true : item.category === selectedCategory)
+  );
 
   return (
     <div className="section-padding" style={{ backgroundColor: 'var(--bg-cream-soft)', minHeight: '80vh' }}>
@@ -33,26 +36,6 @@ export default function GalleryPage({ gallery, openBookingModal }) {
           <p className="section-desc">
             Explore diverse makeup styles, traditional Muhurtham adornments, and glamorous evening transformations.
           </p>
-        </div>
-
-        {/* Portfolio Demonstration Notice Banner */}
-        <div
-          style={{
-            maxWidth: '920px',
-            margin: '0 auto 2.5rem auto',
-            background: 'var(--bg-blush-light)',
-            border: '1px solid var(--border-solid)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1rem 1.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem'
-          }}
-        >
-          <Info size={22} color="var(--rose-gold)" style={{ flexShrink: 0 }} />
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-            <strong>Portfolio Showcase Notice:</strong> The images currently featured in this gallery serve as artistic demonstrations and style references for Diyazhu Makeovers. Original client photographs can be uploaded and managed directly through the studio admin dashboard.
-          </div>
         </div>
 
         {/* Category Filter Tabs */}
