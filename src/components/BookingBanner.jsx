@@ -8,6 +8,7 @@ export default function BookingBanner({ openBookingModal, settings }) {
 
   return (
     <section
+      className="booking-banner-section"
       style={{
         padding: '5rem 0',
         background: 'linear-gradient(135deg, #782a3b 0%, #b76e79 100%)',
@@ -68,7 +69,7 @@ export default function BookingBanner({ openBookingModal, settings }) {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)',
+              fontSize: 'clamp(2rem, 5vw, 3.2rem)',
               color: '#ffffff',
               lineHeight: 1.2,
               marginBottom: '1.25rem'
@@ -79,20 +80,21 @@ export default function BookingBanner({ openBookingModal, settings }) {
 
           <p
             style={{
-              fontSize: '1.1rem',
+              fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)',
               color: 'rgba(255, 255, 255, 0.9)',
               lineHeight: 1.7,
-              marginBottom: '2.5rem'
+              marginBottom: '2rem'
             }}
           >
             Whether you are walking down the aisle, attending a high-fashion gala, or treating your skin to a rejuvenating facial, our artists are ready to bring out your most radiant self.
           </p>
 
           <div
+            className="banner-cta-group"
             style={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: '1rem',
+              gap: '0.85rem',
               justifyContent: 'center',
               alignItems: 'center'
             }}
@@ -102,17 +104,18 @@ export default function BookingBanner({ openBookingModal, settings }) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '0.65rem',
-                padding: '0.95rem 2.2rem',
+                padding: '0.9rem 2.2rem',
                 background: '#ffffff',
                 color: 'var(--deep-rose)',
                 fontWeight: 700,
-                fontSize: '0.96rem',
+                fontSize: '0.95rem',
                 borderRadius: 'var(--radius-full)',
                 boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
                 transition: 'var(--transition-smooth)'
               }}
-              className="booking-btn-hover"
+              className="booking-btn-hover banner-btn"
             >
               <Calendar size={18} />
               <span>Book an Appointment</span>
@@ -122,19 +125,41 @@ export default function BookingBanner({ openBookingModal, settings }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp"
-              style={{ padding: '0.95rem 2.2rem', fontSize: '0.96rem' }}
+              className="btn-whatsapp banner-btn"
+              style={{ padding: '0.9rem 2.2rem', fontSize: '0.95rem' }}
             >
               <MessageCircle size={18} />
               <span>WhatsApp Enquiry</span>
             </a>
           </div>
 
-          <p style={{ marginTop: '1.5rem', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.75)' }}>
+          <p style={{ marginTop: '1.5rem', fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.75)' }}>
             * Appointment requests are subject to confirmation by Diyazhu Makeovers.
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .booking-banner-section {
+            padding: 3.25rem 0 !important;
+          }
+          .banner-cta-group {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.75rem !important;
+          }
+          .banner-btn {
+            width: 100% !important;
+            min-height: 46px;
+          }
+        }
+        @media (max-width: 380px) {
+          .booking-banner-section {
+            padding: 2.5rem 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

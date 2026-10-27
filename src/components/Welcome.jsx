@@ -48,19 +48,20 @@ export default function Welcome({ settings }) {
 
         {/* 4 Pillars Grid */}
         <div
+          className="welcome-pillars-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '1.75rem',
-            marginTop: '3.5rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: '1.5rem',
+            marginTop: '3rem'
           }}
         >
           {pillars.map((p, idx) => (
             <div
               key={idx}
-              className="glass-card"
+              className="glass-card welcome-pillar-card"
               style={{
-                padding: '2.25rem 1.75rem',
+                padding: '2rem 1.5rem',
                 textAlign: 'center',
                 display: 'flex',
                 flexDirection: 'column',
@@ -73,14 +74,14 @@ export default function Welcome({ settings }) {
             >
               <div
                 style={{
-                  width: '56px',
-                  height: '56px',
+                  width: '52px',
+                  height: '52px',
                   borderRadius: '50%',
                   background: 'var(--bg-blush)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '1.25rem',
+                  marginBottom: '1rem',
                   border: '1px solid var(--border-light)'
                 }}
               >
@@ -88,21 +89,39 @@ export default function Welcome({ settings }) {
               </div>
               <h3
                 style={{
-                  fontSize: '1.22rem',
-                  marginBottom: '0.75rem',
+                  fontSize: '1.18rem',
+                  marginBottom: '0.65rem',
                   color: 'var(--deep-rose)',
                   fontFamily: 'var(--font-serif)'
                 }}
               >
                 {p.title}
               </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
                 {p.desc}
               </p>
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .welcome-pillars-grid {
+            margin-top: 2rem !important;
+            gap: 1.25rem !important;
+          }
+          .welcome-pillar-card {
+            padding: 1.5rem 1.15rem !important;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .welcome-pillar-card {
+            padding: 1.25rem 1rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

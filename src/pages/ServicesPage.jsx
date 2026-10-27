@@ -40,6 +40,7 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
 
         {/* Pricing Transparency & Customization Notice */}
         <div
+          className="services-notice-box"
           style={{
             maxWidth: '850px',
             margin: '0 auto 2.5rem auto',
@@ -60,6 +61,7 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
 
         {/* Category Tabs */}
         <div
+          className="services-category-tabs"
           style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -94,10 +96,11 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
 
         {/* Services Grid */}
         <div
+          className="services-page-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-            gap: '2.25rem'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
+            gap: '2rem'
           }}
         >
           {filteredServices.map((service) => {
@@ -214,7 +217,7 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
                   </div>
 
                   {/* Buttons */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.75rem' }}>
+                  <div className="service-card-actions" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.65rem' }}>
                     <button
                       onClick={() => openBookingModal(service.title)}
                       className="btn-primary"
@@ -228,8 +231,8 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
                       href={serviceWhatsAppUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary"
-                      style={{ padding: '0.75rem 1rem', color: '#25d366' }}
+                      className="btn-secondary service-wa-btn"
+                      style={{ padding: '0.75rem 1rem', color: '#25d366', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                       title="Enquire on WhatsApp"
                     >
                       <MessageCircle size={18} />
@@ -247,6 +250,36 @@ export default function ServicesPage({ services, openBookingModal, settings }) {
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .services-page-grid {
+            gap: 1.5rem !important;
+          }
+          .services-category-tabs {
+            margin-bottom: 2rem !important;
+            gap: 0.5rem !important;
+          }
+          .services-notice-box {
+            align-items: flex-start !important;
+            padding: 0.85rem 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .services-page-grid {
+            gap: 1.25rem !important;
+          }
+          .service-card-actions {
+            grid-template-columns: 1fr auto !important;
+          }
+          .service-wa-btn {
+            width: auto !important;
+            padding: 0.75rem 1rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

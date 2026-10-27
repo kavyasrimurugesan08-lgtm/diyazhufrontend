@@ -47,17 +47,19 @@ export default function AboutPage({ settings, openBookingModal }) {
 
         {/* 2-Column Story Section */}
         <div
+          className="about-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
             alignItems: 'center',
-            gap: '4rem',
-            marginBottom: '5rem'
+            gap: '3.5rem',
+            marginBottom: '4rem'
           }}
         >
           {/* Visual with frame */}
-          <div style={{ position: 'relative' }}>
+          <div className="about-visual-column" style={{ position: 'relative' }}>
             <div
+              className="about-image-frame"
               style={{
                 borderRadius: '180px 180px 24px 24px',
                 overflow: 'hidden',
@@ -74,22 +76,23 @@ export default function AboutPage({ settings, openBookingModal }) {
             </div>
 
             <div
+              className="about-floating-card"
               style={{
                 position: 'absolute',
-                bottom: '-25px',
-                right: '20px',
+                bottom: '-20px',
+                right: '15px',
                 background: '#ffffff',
-                padding: '1rem 1.5rem',
+                padding: '0.85rem 1.25rem',
                 borderRadius: 'var(--radius-md)',
                 boxShadow: '0 12px 30px rgba(110, 39, 53, 0.15)',
                 border: '1px solid var(--border-light)',
                 maxWidth: '260px'
               }}
             >
-              <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--deep-rose)', fontWeight: 700 }}>
+              <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700 }}>
                 Diyazhu Artistry
               </div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 Dedicated to bespoke bridal transformations & skin wellness.
               </div>
             </div>
@@ -141,7 +144,7 @@ export default function AboutPage({ settings, openBookingModal }) {
 
             <button
               onClick={() => openBookingModal()}
-              className="btn-primary"
+              className="btn-primary about-consult-btn"
             >
               <Calendar size={18} />
               <span>Schedule a Consultation</span>
@@ -150,12 +153,12 @@ export default function AboutPage({ settings, openBookingModal }) {
         </div>
 
         {/* 4 Brand Values */}
-        <div style={{ marginTop: '4rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.2rem', color: 'var(--deep-rose)' }}>
+        <div style={{ marginTop: '3.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--deep-rose)' }}>
               Our Studio Standards
             </h3>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
               Every client experiences our hallmark standards of comfort, luxury, and artistic integrity.
             </p>
           </div>
@@ -163,8 +166,8 @@ export default function AboutPage({ settings, openBookingModal }) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '2rem'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+              gap: '1.5rem'
             }}
           >
             {brandValues.map((val, idx) => (
@@ -173,15 +176,15 @@ export default function AboutPage({ settings, openBookingModal }) {
                 className="glass-card"
                 style={{
                   background: '#ffffff',
-                  padding: '2rem 1.5rem',
+                  padding: '1.75rem 1.25rem',
                   borderRadius: 'var(--radius-md)',
                   border: '1px solid var(--border-light)'
                 }}
               >
                 <div
                   style={{
-                    width: '46px',
-                    height: '46px',
+                    width: '44px',
+                    height: '44px',
                     borderRadius: '50%',
                     background: 'var(--bg-blush)',
                     display: 'flex',
@@ -191,12 +194,12 @@ export default function AboutPage({ settings, openBookingModal }) {
                     color: 'var(--rose-gold)'
                   }}
                 >
-                  <CheckCircle2 size={22} />
+                  <CheckCircle2 size={20} />
                 </div>
-                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--deep-rose)', marginBottom: '0.5rem' }}>
+                <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--deep-rose)', marginBottom: '0.5rem' }}>
                   {val.title}
                 </h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
                   {val.desc}
                 </p>
               </div>
@@ -204,6 +207,36 @@ export default function AboutPage({ settings, openBookingModal }) {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .about-grid {
+            gap: 2rem !important;
+            margin-bottom: 2.5rem !important;
+          }
+          .about-visual-column {
+            max-width: 340px;
+            margin: 0 auto;
+            width: 100%;
+          }
+          .about-consult-btn {
+            width: 100% !important;
+            justify-content: center;
+            min-height: 46px;
+          }
+          .about-floating-card {
+            position: static !important;
+            margin-top: 1rem;
+            max-width: 100% !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .about-visual-column {
+            max-width: 290px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

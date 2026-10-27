@@ -9,6 +9,7 @@ export default function FloatingWhatsApp({ settings }) {
 
   return (
     <div
+      className="floating-whatsapp-container"
       style={{
         position: 'fixed',
         bottom: '24px',
@@ -24,6 +25,7 @@ export default function FloatingWhatsApp({ settings }) {
       {/* Tooltip on hover */}
       {showTooltip && (
         <div
+          className="whatsapp-float-tooltip"
           style={{
             background: 'rgba(43, 34, 35, 0.92)',
             color: '#ffffff',
@@ -47,8 +49,8 @@ export default function FloatingWhatsApp({ settings }) {
         rel="noopener noreferrer"
         aria-label="Enquire on WhatsApp"
         style={{
-          width: '54px',
-          height: '54px',
+          width: '52px',
+          height: '52px',
           borderRadius: '50%',
           backgroundColor: '#25d366',
           color: '#ffffff',
@@ -60,13 +62,27 @@ export default function FloatingWhatsApp({ settings }) {
         }}
         className="whatsapp-float-btn"
       >
-        <MessageCircle size={28} />
+        <MessageCircle size={26} />
       </a>
 
       <style>{`
         .whatsapp-float-btn:hover {
           transform: scale(1.08) translateY(-2px);
           box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+        }
+
+        @media (max-width: 640px) {
+          .floating-whatsapp-container {
+            bottom: 18px !important;
+            right: 18px !important;
+          }
+          .whatsapp-float-btn {
+            width: 48px !important;
+            height: 48px !important;
+          }
+          .whatsapp-float-tooltip {
+            display: none !important;
+          }
         }
       `}</style>
     </div>

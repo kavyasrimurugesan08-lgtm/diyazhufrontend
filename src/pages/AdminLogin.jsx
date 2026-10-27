@@ -42,7 +42,7 @@ export default function AdminLogin({ onLoginSuccess, setCurrentView }) {
       }}
     >
       <div
-        className="glass-card"
+        className="glass-card admin-login-card"
         style={{
           width: '100%',
           maxWidth: '440px',
@@ -210,6 +210,18 @@ export default function AdminLogin({ onLoginSuccess, setCurrentView }) {
           </button>
         </form>
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .admin-login-card {
+            padding: 2rem 1.25rem !important;
+            border-radius: var(--radius-md) !important;
+          }
+          .admin-login-card input {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

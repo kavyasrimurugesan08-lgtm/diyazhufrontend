@@ -14,11 +14,12 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
     <section className="section-padding" style={{ backgroundColor: 'var(--bg-cream)', position: 'relative' }}>
       <div className="container">
         <div
+          className="bridal-highlight-card"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
             alignItems: 'center',
-            gap: '4rem',
+            gap: '3.5rem',
             background: 'linear-gradient(135deg, rgba(252, 241, 242, 0.7) 0%, rgba(250, 248, 245, 0.95) 100%)',
             padding: '3.5rem 2.5rem',
             borderRadius: 'var(--radius-lg)',
@@ -39,9 +40,10 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
               <img
                 src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1000&q=85"
                 alt="Bridal Couture Makeover Diyazhu"
+                className="bridal-showcase-img"
                 style={{
                   width: '100%',
-                  height: '480px',
+                  height: '460px',
                   objectFit: 'cover'
                 }}
               />
@@ -55,9 +57,9 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '1.5rem',
-                  left: '1.5rem',
-                  right: '1.5rem',
+                  bottom: '1.25rem',
+                  left: '1.25rem',
+                  right: '1.25rem',
                   color: '#ffffff'
                 }}
               >
@@ -67,7 +69,7 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
                     Couture Bridal Artistry
                   </span>
                 </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 600 }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: 600 }}>
                   Crafting the Queen in Every Bride
                 </div>
               </div>
@@ -106,7 +108,7 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
 
             <h2
               style={{
-                fontSize: 'clamp(2.2rem, 3.5vw, 2.9rem)',
+                fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
                 fontFamily: 'var(--font-serif)',
                 color: 'var(--deep-rose)',
                 marginBottom: '1.25rem',
@@ -116,7 +118,7 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
               Your Dream Wedding Look, Perfected.
             </h2>
 
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '2rem' }}>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '2rem' }}>
               From intimate morning Muhurtham rituals to sparkling grand evening Receptions, Diyazhu Makeovers crafts bridal transformations that photograph effortlessly and remain immaculate from the first ritual to the final farewell.
             </p>
 
@@ -124,20 +126,21 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
               {highlights.map((h, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                   <CheckCircle2 size={19} color="var(--rose-gold)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '0.95rem', color: 'var(--text-main)', fontWeight: 500 }}>
+                  <span style={{ fontSize: '0.94rem', color: 'var(--text-main)', fontWeight: 500 }}>
                     {h}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
+            <div className="bridal-cta-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', alignItems: 'center' }}>
               <button
                 onClick={() => {
                   setCurrentView('bridal');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="btn-primary"
+                className="btn-primary bridal-btn"
+                style={{ padding: '0.85rem 1.85rem' }}
               >
                 <span>View Bridal Gallery</span>
                 <ArrowRight size={17} />
@@ -145,7 +148,8 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
 
               <button
                 onClick={() => openBookingModal('Traditional Bridal Makeover')}
-                className="btn-secondary"
+                className="btn-secondary bridal-btn"
+                style={{ padding: '0.82rem 1.75rem' }}
               >
                 <span>Enquire for Bridal Dates</span>
               </button>
@@ -155,7 +159,43 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
       </div>
 
       <style>{`
-        @media (min-width: 900px) {
+        @media (max-width: 900px) {
+          .bridal-highlight-card {
+            padding: 2.5rem 1.75rem !important;
+            gap: 2.5rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .bridal-highlight-card {
+            padding: 1.75rem 1.25rem !important;
+            gap: 2rem !important;
+          }
+          .bridal-showcase-img {
+            height: 300px !important;
+          }
+          .bridal-cta-group {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.75rem !important;
+          }
+          .bridal-btn {
+            width: 100% !important;
+            min-height: 46px;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .bridal-highlight-card {
+            padding: 1.25rem 0.95rem !important;
+            gap: 1.5rem !important;
+          }
+          .bridal-showcase-img {
+            height: 250px !important;
+          }
+        }
+
+        @media (min-width: 992px) {
           .accent-photo {
             display: block !important;
           }

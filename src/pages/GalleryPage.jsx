@@ -76,8 +76,8 @@ export default function GalleryPage({ gallery, openBookingModal }) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '1.75rem'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
+            gap: '1.5rem'
           }}
         >
           {filteredGallery.map((item) => (
@@ -202,8 +202,9 @@ export default function GalleryPage({ gallery, openBookingModal }) {
             />
 
             <div
+              className="gallery-lightbox-bar"
               style={{
-                padding: '1.5rem',
+                padding: '1.25rem 1.5rem',
                 background: '#ffffff',
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -216,11 +217,11 @@ export default function GalleryPage({ gallery, openBookingModal }) {
                 <span className="section-tag" style={{ marginBottom: '0.25rem', padding: '0.2rem 0.75rem', fontSize: '0.72rem' }}>
                   {activeLightbox.category}
                 </span>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', color: 'var(--deep-rose)' }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--deep-rose)' }}>
                   {activeLightbox.title}
                 </h3>
                 {activeLightbox.caption && (
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
                     {activeLightbox.caption}
                   </p>
                 )}
@@ -232,7 +233,8 @@ export default function GalleryPage({ gallery, openBookingModal }) {
                   setActiveLightbox(null);
                   openBookingModal(look);
                 }}
-                className="btn-primary"
+                className="btn-primary gallery-lightbox-btn"
+                style={{ flexShrink: 0 }}
               >
                 <Calendar size={16} />
                 <span>Enquire for This Look</span>
@@ -245,6 +247,29 @@ export default function GalleryPage({ gallery, openBookingModal }) {
       <style>{`
         .gallery-card-item:hover .gallery-card-img {
           transform: scale(1.06);
+        }
+
+        @media (max-width: 640px) {
+          .gallery-card-item {
+            height: 320px !important;
+          }
+          .gallery-lightbox-bar {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            padding: 1.15rem 1rem !important;
+            gap: 0.85rem !important;
+          }
+          .gallery-lightbox-btn {
+            width: 100% !important;
+            justify-content: center;
+            min-height: 46px;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .gallery-card-item {
+            height: 280px !important;
+          }
         }
       `}</style>
     </div>

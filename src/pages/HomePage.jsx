@@ -5,7 +5,7 @@ import BridalHighlight from '../components/BridalHighlight';
 import BookingBanner from '../components/BookingBanner';
 import { Calendar, Eye, Sparkles, Clock, ArrowRight, Maximize2, X } from 'lucide-react';
 
-export default function HomePage({
+export default function HomePage ({
   services,
   gallery,
   settings,
@@ -51,9 +51,10 @@ export default function HomePage({
 
           {/* Service Cards Grid */}
           <div
+            className="home-services-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
               gap: '2rem',
               marginBottom: '3rem'
             }}
@@ -217,9 +218,10 @@ export default function HomePage({
 
           {/* Gallery Grid */}
           <div
+            className="home-gallery-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))',
               gap: '1.5rem',
               marginBottom: '3rem'
             }}
@@ -346,16 +348,16 @@ export default function HomePage({
               style={{ width: '100%', maxHeight: '65vh', objectFit: 'contain', background: '#1a1415' }}
             />
 
-            <div style={{ padding: '1.5rem', background: '#ffffff', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="lightbox-info-bar" style={{ padding: '1.25rem 1.5rem', background: '#ffffff', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
               <div>
                 <span className="section-tag" style={{ marginBottom: '0.25rem', padding: '0.2rem 0.75rem', fontSize: '0.72rem' }}>
                   {activeLightbox.category}
                 </span>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--deep-rose)' }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', color: 'var(--deep-rose)' }}>
                   {activeLightbox.title}
                 </h3>
                 {activeLightbox.caption && (
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
                     {activeLightbox.caption}
                   </p>
                 )}
@@ -366,7 +368,8 @@ export default function HomePage({
                   setActiveLightbox(null);
                   openBookingModal(activeLightbox.title);
                 }}
-                className="btn-primary btn-sm"
+                className="btn-primary btn-sm lightbox-action-btn"
+                style={{ flexShrink: 0 }}
               >
                 <Calendar size={15} />
                 <span>Book This Look</span>
@@ -376,13 +379,34 @@ export default function HomePage({
         </div>
       )}
 
-      {/* Hover Zoom CSS */}
+      {/* Responsive & Hover Zoom CSS */}
       <style>{`
         .service-card-img:hover {
           transform: scale(1.05);
         }
         .gallery-item-hover:hover .gallery-img {
           transform: scale(1.08);
+        }
+
+        @media (max-width: 640px) {
+          .home-services-grid {
+            gap: 1.25rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .home-gallery-grid {
+            gap: 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .lightbox-info-bar {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            padding: 1.15rem 1rem !important;
+          }
+          .lightbox-action-btn {
+            width: 100% !important;
+            justify-content: center;
+            min-height: 44px;
+          }
         }
       `}</style>
     </div>

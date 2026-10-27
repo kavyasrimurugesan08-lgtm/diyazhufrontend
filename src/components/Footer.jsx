@@ -14,6 +14,7 @@ export default function Footer({ setCurrentView, settings, openBookingModal }) {
 
   return (
     <footer
+      className="site-footer"
       style={{
         background: '#23181a',
         color: '#fdfbf7',
@@ -24,11 +25,12 @@ export default function Footer({ setCurrentView, settings, openBookingModal }) {
     >
       <div className="container">
         <div
+          className="footer-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '3rem',
-            marginBottom: '4rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+            gap: '2.5rem',
+            marginBottom: '3.5rem'
           }}
         >
           {/* Brand Column */}
@@ -196,6 +198,7 @@ export default function Footer({ setCurrentView, settings, openBookingModal }) {
 
         {/* Bottom Bar with Admin Link */}
         <div
+          className="footer-bottom-bar"
           style={{
             paddingTop: '2rem',
             borderTop: '1px solid rgba(255, 255, 255, 0.08)',
@@ -238,6 +241,32 @@ export default function Footer({ setCurrentView, settings, openBookingModal }) {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .site-footer {
+            padding: 3.25rem 0 2rem 0 !important;
+          }
+          .footer-grid {
+            gap: 2rem !important;
+          }
+          .footer-bottom-bar {
+            flex-direction: column !important;
+            text-align: center !important;
+            justify-content: center !important;
+            gap: 1.25rem !important;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .site-footer {
+            padding: 2.75rem 0 1.5rem 0 !important;
+          }
+          .footer-grid {
+            gap: 1.75rem !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

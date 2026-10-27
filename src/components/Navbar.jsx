@@ -17,6 +17,18 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile drawer is open to prevent background scrolling
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
@@ -57,13 +69,12 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
           {/* Brand Logo & Wordmark */}
           <button
             onClick={() => handleNavClick('home')}
-            style={{ textAlign: 'left', display: 'flex', alignItems: 'center', gap: '0.9rem', textDecoration: 'none' }}
+            style={{ textAlign: 'left', display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none' }}
             aria-label="Diyazhu Makeovers Home"
           >
             <div
+              className="brand-logo-avatar"
               style={{
-                width: '50px',
-                height: '50px',
                 borderRadius: '50%',
                 background: 'linear-gradient(135deg, #eecbc4 0%, #b76e79 100%)',
                 display: 'flex',
@@ -72,7 +83,6 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
                 color: '#fff',
                 fontWeight: 700,
                 fontFamily: 'var(--font-serif)',
-                fontSize: '1.45rem',
                 boxShadow: '0 5px 16px rgba(183, 110, 121, 0.35)',
                 flexShrink: 0
               }}
@@ -81,11 +91,11 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
             </div>
             <div>
               <div
+                className="brand-logo-title"
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.42rem',
                   fontWeight: 700,
-                  letterSpacing: '0.14em',
+                  letterSpacing: '0.12em',
                   color: 'var(--deep-rose)',
                   textTransform: 'uppercase',
                   lineHeight: 1.15
@@ -94,13 +104,13 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
                 DIYAZHU
               </div>
               <div
+                className="brand-logo-subtitle"
                 style={{
-                  fontSize: '0.74rem',
-                  letterSpacing: '0.26em',
+                  letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   color: 'var(--rose-gold)',
                   fontWeight: 600,
-                  marginTop: '3px'
+                  marginTop: '2px'
                 }}
               >
                 MAKEOVERS • STUDIO
@@ -249,21 +259,26 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
+          className="mobile-drawer-overlay"
           style={{
             position: 'fixed',
             inset: 0,
-            top: '82px',
+            top: isScrolled ? '62px' : '68px',
+            height: isScrolled ? 'calc(100dvh - 62px)' : 'calc(100dvh - 68px)',
             backgroundColor: 'rgba(250, 248, 245, 0.98)',
             backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             zIndex: 49,
             display: 'flex',
             flexDirection: 'column',
-            padding: '2rem 1.5rem',
-            gap: '1.25rem',
+            padding: '1.25rem 1.25rem 2.5rem 1.25rem',
+            gap: '1rem',
+            overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch',
             animation: 'fadeIn 0.2s ease-in'
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
             {navItems.map((item) => {
               const active = currentView === item.id;
               return (
@@ -272,15 +287,16 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
                   onClick={() => handleNavClick(item.id)}
                   style={{
                     textAlign: 'left',
-                    fontSize: '1.25rem',
+                    fontSize: '1.22rem',
                     fontFamily: 'var(--font-serif)',
-                    padding: '0.75rem 0',
+                    padding: '0.85rem 0',
                     borderBottom: '1px solid rgba(183, 110, 121, 0.12)',
                     color: active ? 'var(--deep-rose)' : 'var(--text-main)',
                     fontWeight: active ? 700 : 500,
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    minHeight: '48px'
                   }}
                 >
                   <span>{item.label}</span>
@@ -290,17 +306,17 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
             })}
           </div>
 
-          <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          <div style={{ marginTop: 'auto', paddingTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 openBookingModal();
               }}
               className="btn-primary"
-              style={{ width: '100%' }}
+              style={{ width: '100%', padding: '0.9rem 1rem', minHeight: '48px' }}
             >
               <Calendar size={18} />
-              Book an Appointment
+              <span>Book an Appointment</span>
             </button>
 
             <a
@@ -308,10 +324,10 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp"
-              style={{ width: '100%' }}
+              style={{ width: '100%', padding: '0.9rem 1rem', minHeight: '48px' }}
             >
               <MessageCircle size={18} />
-              WhatsApp Enquiry
+              <span>WhatsApp Enquiry</span>
             </a>
 
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
@@ -320,7 +336,8 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
                 style={{
                   fontSize: '0.85rem',
                   color: 'var(--text-muted)',
-                  textDecoration: 'underline'
+                  textDecoration: 'underline',
+                  padding: '0.5rem'
                 }}
               >
                 Studio Owner / Admin Login
@@ -330,11 +347,54 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
         </div>
       )}
 
-      {/* Desktop Responsive CSS override */}
+      {/* Responsive Brand & Navigation CSS */}
       <style>{`
-        @media (min-width: 900px) {
+        .brand-logo-avatar {
+          width: 44px;
+          height: 44px;
+          font-size: 1.3rem;
+        }
+        .brand-logo-title {
+          font-size: 1.32rem;
+        }
+        .brand-logo-subtitle {
+          font-size: 0.68rem;
+        }
+
+        @media (max-width: 480px) {
+          .brand-logo-avatar {
+            width: 36px;
+            height: 36px;
+            font-size: 1.1rem;
+          }
+          .brand-logo-title {
+            font-size: 1.08rem;
+            letter-spacing: 0.08em;
+          }
+          .brand-logo-subtitle {
+            font-size: 0.55rem;
+            letter-spacing: 0.14em;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .brand-logo-avatar {
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+          }
+          .brand-logo-title {
+            font-size: 0.98rem;
+          }
+          .brand-logo-subtitle {
+            display: none;
+          }
+        }
+
+        @media (min-width: 1024px) {
           .desktop-nav {
             display: flex !important;
+            gap: clamp(1.2rem, 1.8vw, 2.1rem) !important;
           }
           .desktop-actions {
             display: flex !important;

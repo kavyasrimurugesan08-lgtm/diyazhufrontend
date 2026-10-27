@@ -278,6 +278,7 @@ export default function AdminDashboard({ user, onLogout, setCurrentView, onRefre
     <div style={{ backgroundColor: '#f7f4f0', minHeight: '100vh', paddingBottom: '5rem' }}>
       {/* Admin Top Navigation Bar */}
       <div
+        className="admin-top-header"
         style={{
           background: '#ffffff',
           borderBottom: '1px solid var(--border-solid)',
@@ -391,6 +392,7 @@ export default function AdminDashboard({ user, onLogout, setCurrentView, onRefre
       <div className="container" style={{ marginTop: '2rem' }}>
         {/* Navigation Tabs */}
         <div
+          className="admin-nav-tabs"
           style={{
             display: 'flex',
             gap: '0.5rem',
@@ -1262,11 +1264,11 @@ export default function AdminDashboard({ user, onLogout, setCurrentView, onRefre
       {serviceModalOpen && (
         <div className="lightbox-overlay">
           <div
-            className="glass-card"
+            className="glass-card admin-modal-card"
             style={{
               width: '100%',
               maxWidth: '540px',
-              maxHeight: '90vh',
+              maxHeight: '92vh',
               overflowY: 'auto',
               padding: '2rem',
               background: '#ffffff',
@@ -1388,10 +1390,12 @@ export default function AdminDashboard({ user, onLogout, setCurrentView, onRefre
       {galleryModalOpen && (
         <div className="lightbox-overlay">
           <div
-            className="glass-card"
+            className="glass-card admin-modal-card"
             style={{
               width: '100%',
               maxWidth: '520px',
+              maxHeight: '92vh',
+              overflowY: 'auto',
               padding: '2rem',
               background: '#ffffff',
               borderRadius: 'var(--radius-md)'
@@ -1489,6 +1493,37 @@ export default function AdminDashboard({ user, onLogout, setCurrentView, onRefre
           </div>
         </div>
       )}
+
+      {/* Admin Dashboard Responsive CSS */}
+      <style>{`
+        .admin-nav-tabs {
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+        .admin-nav-tabs::-webkit-scrollbar {
+          display: none;
+        }
+
+        @media (max-width: 640px) {
+          .admin-top-header {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.75rem !important;
+            padding: 0.85rem 1rem !important;
+          }
+          .admin-top-header > div:last-child {
+            justify-content: space-between;
+          }
+          .admin-modal-card {
+            padding: 1.5rem 1.15rem !important;
+          }
+          .admin-modal-card input,
+          .admin-modal-card select,
+          .admin-modal-card textarea {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -108,7 +108,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService, serv
   return (
     <div className="lightbox-overlay">
       <div
-        className="glass-card"
+        className="glass-card booking-modal-card"
         style={{
           width: '100%',
           maxWidth: '560px',
@@ -314,7 +314,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService, serv
               </div>
 
               {/* Date & Time Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="modal-datetime-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
                 <div>
                   <label
                     style={{
@@ -529,6 +529,25 @@ export default function BookingModal({ isOpen, onClose, preselectedService, serv
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 520px) {
+          .booking-modal-card {
+            padding: 1.5rem 1rem !important;
+            border-radius: var(--radius-md) !important;
+            max-height: 94dvh !important;
+          }
+          .modal-datetime-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.75rem !important;
+          }
+          .booking-modal-card input,
+          .booking-modal-card select,
+          .booking-modal-card textarea {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

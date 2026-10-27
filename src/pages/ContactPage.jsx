@@ -82,10 +82,11 @@ export default function ContactPage({ settings, openBookingModal }) {
 
         {/* 2-Column Contact Grid */}
         <div
+          className="contact-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '3.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '3rem',
             alignItems: 'start'
           }}
         >
@@ -107,34 +108,34 @@ export default function ContactPage({ settings, openBookingModal }) {
             </p>
 
             {/* Quick Action Buttons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '2.5rem' }}>
               <a
                 href={`tel:${cleanPhone}`}
-                className="btn-primary"
-                style={{ padding: '0.95rem 1.75rem', justifyContent: 'flex-start' }}
+                className="btn-primary contact-action-btn"
+                style={{ padding: '0.9rem 1.5rem', justifyContent: 'flex-start', fontSize: '0.92rem' }}
               >
-                <Phone size={19} />
-                <span>Call Us Now: +91 {phone}</span>
+                <Phone size={18} style={{ flexShrink: 0 }} />
+                <span>Call Us: +91 {phone}</span>
               </a>
 
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp"
-                style={{ padding: '0.95rem 1.75rem', justifyContent: 'flex-start' }}
+                className="btn-whatsapp contact-action-btn"
+                style={{ padding: '0.9rem 1.5rem', justifyContent: 'flex-start', fontSize: '0.92rem' }}
               >
-                <MessageCircle size={19} />
-                <span>WhatsApp Instant Enquiry (+91 {whatsapp})</span>
+                <MessageCircle size={18} style={{ flexShrink: 0 }} />
+                <span>WhatsApp Enquiry (+91 {whatsapp})</span>
               </a>
             </div>
 
             {/* Studio Info Card */}
             <div
-              className="glass-card"
+              className="glass-card contact-info-card"
               style={{
                 background: '#ffffff',
-                padding: '2rem',
+                padding: '1.75rem',
                 borderRadius: 'var(--radius-md)',
                 border: '1px solid var(--border-light)'
               }}
@@ -179,10 +180,10 @@ export default function ContactPage({ settings, openBookingModal }) {
 
           {/* Right Column: Interactive Appointment Request Form */}
           <div
-            className="glass-card"
+            className="glass-card contact-form-card"
             style={{
               background: '#ffffff',
-              padding: '2.5rem',
+              padding: '2.25rem',
               borderRadius: 'var(--radius-lg)',
               border: '1px solid var(--border-light)',
               boxShadow: 'var(--shadow-card)'
@@ -332,7 +333,7 @@ export default function ContactPage({ settings, openBookingModal }) {
                   </select>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="contact-datetime-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.4rem' }}>
                       Preferred Date *
@@ -436,6 +437,44 @@ export default function ContactPage({ settings, openBookingModal }) {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .contact-grid {
+            gap: 2rem !important;
+          }
+          .contact-form-card {
+            padding: 1.5rem 1rem !important;
+          }
+          .contact-info-card {
+            padding: 1.5rem 1rem !important;
+          }
+          .contact-datetime-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.75rem !important;
+          }
+          .contact-action-btn {
+            min-height: 46px;
+          }
+          .contact-form-card input,
+          .contact-form-card select,
+          .contact-form-card textarea {
+            font-size: 16px !important;
+          }
+        }
+
+        @media (max-width: 400px) {
+          .contact-grid {
+            gap: 1.75rem !important;
+          }
+          .contact-form-card {
+            padding: 1.25rem 0.9rem !important;
+          }
+          .contact-info-card {
+            padding: 1.25rem 0.9rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
