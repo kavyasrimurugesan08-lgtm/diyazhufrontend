@@ -27,75 +27,99 @@ export default function BridalHighlight({ setCurrentView, openBookingModal }) {
             boxShadow: 'var(--shadow-card)'
           }}
         >
-          {/* Visual Showcase */}
+          {/* Visual Showcase with Royal Gilded Frame */}
           <div style={{ position: 'relative' }}>
             <div
+              className="bridal-frame-container"
               style={{
                 position: 'relative',
-                borderRadius: 'var(--radius-md)',
-                overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(110, 39, 53, 0.18)'
+                padding: '12px',
+                borderRadius: '160px 160px 20px 20px',
+                background: 'linear-gradient(135deg, #dfb78c 0%, #c4886e 25%, #fff0df 50%, #b76e79 75%, #8c4250 100%)',
+                boxShadow: '0 24px 50px rgba(110, 39, 53, 0.2), 0 0 25px rgba(223, 183, 140, 0.35)'
               }}
             >
-              <img
-                src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1000&q=85"
-                alt="Bridal Couture Makeover Diyazhu"
-                className="bridal-showcase-img"
+              <div
                 style={{
                   width: '100%',
-                  height: '460px',
-                  objectFit: 'cover'
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(43, 34, 35, 0.5) 0%, transparent 40%)'
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '1.25rem',
-                  left: '1.25rem',
-                  right: '1.25rem',
-                  color: '#ffffff'
+                  borderRadius: '150px 150px 12px 12px',
+                  overflow: 'hidden',
+                  position: 'relative'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                  <Crown size={18} color="#f7eed9" />
-                  <span style={{ fontSize: '0.8rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#f7eed9' }}>
-                    Couture Bridal Artistry
-                  </span>
-                </div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: 600 }}>
-                  Crafting the Queen in Every Bride
+                <img
+                  src="/hero-bride-portrait.jpg"
+                  alt="Bridal Couture Makeover Diyazhu"
+                  className="bridal-showcase-img"
+                  style={{
+                    width: '100%',
+                    height: '470px',
+                    objectFit: 'cover',
+                    transition: 'transform 0.8s ease'
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, rgba(43, 34, 35, 0.75) 0%, rgba(43, 34, 35, 0.1) 45%, transparent 70%)'
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '1.25rem',
+                    left: '1.25rem',
+                    right: '1.25rem',
+                    color: '#ffffff'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                    <Crown size={18} color="#f7eed9" />
+                    <span style={{ fontSize: '0.8rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#f7eed9' }}>
+                      Couture Bridal Artistry
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: 600 }}>
+                    Crafting the Queen in Every Bride
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Small offset accent photo on desktop */}
+            {/* Framed Offset Accent Photo (Dancing Bride) */}
             <div
               style={{
                 position: 'absolute',
                 top: '-20px',
                 right: '-20px',
-                width: '140px',
-                height: '140px',
-                borderRadius: 'var(--radius-md)',
-                overflow: 'hidden',
-                border: '4px solid #ffffff',
-                boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
-                display: 'none'
+                width: '150px',
+                height: '150px',
+                borderRadius: '50%',
+                padding: '6px',
+                background: 'linear-gradient(135deg, #dfb78c, #b76e79)',
+                boxShadow: '0 12px 30px rgba(110, 39, 53, 0.25)',
+                display: 'none',
+                zIndex: 4,
+                animation: 'floatPetal 6s ease-in-out infinite'
               }}
               className="accent-photo"
             >
-              <img
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=80"
-                alt="Bridal Hairstyling Detail"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2px solid #ffffff'
+                }}
+              >
+                <img
+                  src="/hero-bride-dance.png"
+                  alt="Bridal Celebration Detail"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
             </div>
           </div>
 

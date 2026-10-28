@@ -3,6 +3,8 @@ import Hero from '../components/Hero';
 import Welcome from '../components/Welcome';
 import BridalHighlight from '../components/BridalHighlight';
 import BookingBanner from '../components/BookingBanner';
+import HomeBackgroundFrames from '../components/HomeBackgroundFrames';
+import ArtistryFramesShowcase from '../components/ArtistryFramesShowcase';
 import { Calendar, Eye, Sparkles, Clock, ArrowRight, Maximize2, X } from 'lucide-react';
 
 export default function HomePage ({
@@ -21,8 +23,11 @@ export default function HomePage ({
   const previewGallery = gallery ? gallery.slice(0, 6) : [];
 
   return (
-    <div>
-      {/* 1. Hero Section */}
+    <div style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Ambient Animated Floating Frames Background across Home Page */}
+      <HomeBackgroundFrames />
+
+      {/* 1. Hero Section with Animated Ken Burns Background and Royal Crowned Frame */}
       <Hero
         openBookingModal={openBookingModal}
         setCurrentView={setCurrentView}
@@ -32,7 +37,21 @@ export default function HomePage ({
       {/* 2. Welcome Section */}
       <Welcome settings={settings} />
 
-      {/* 3. Featured Services Section */}
+      {/* 3. Artistry In Frames - Royal Animated Showcase Section */}
+      <ArtistryFramesShowcase
+        openBookingModal={openBookingModal}
+        onOpenLightbox={(item) =>
+          setActiveLightbox({
+            id: item.id,
+            title: item.title,
+            category: item.tag,
+            caption: item.desc,
+            image_url: item.imageUrl
+          })
+        }
+      />
+
+      {/* 4. Featured Services Section */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-cream)' }}>
         <div className="container">
           <div className="section-header">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, MessageCircle, Mail, MapPin, Clock, Heart, Lock, Sparkles } from 'lucide-react';
+import { LotusLogo } from './Navbar';
 
 export default function Footer({ setCurrentView, settings, openBookingModal }) {
   const phone = settings?.phone || '9003979277';
@@ -36,37 +37,23 @@ export default function Footer({ setCurrentView, settings, openBookingModal }) {
           {/* Brand Column */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-              <div
-                style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #eecbc4 0%, #b76e79 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontWeight: 700,
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.15rem'
-                }}
-              >
-                D
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <LotusLogo size={36} color="#eecbc4" />
               </div>
               <div>
                 <div
                   style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '1.2rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: '1.25rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.03em',
                     color: '#ffffff'
                   }}
                 >
-                  DIYAZHU
+                  Diyazhu Makeovers
                 </div>
-                <div style={{ fontSize: '0.62rem', letterSpacing: '0.22em', color: 'var(--rose-gold-light)' }}>
-                  MAKEOVERS • STUDIO
+                <div style={{ fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--rose-gold-light)' }}>
+                  YOUR BEAUTY, YOUR SIGNATURE.
                 </div>
               </div>
             </div>

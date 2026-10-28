@@ -2,22 +2,38 @@
 export const DEFAULT_GALLERY = [
   {
     id: 1,
-    title: 'Royal Muhurtham Bride',
+    title: 'Imperial Muhurtham Bride',
     category: 'Bridal Looks',
-    caption: 'Traditional South Indian bridal glam with gold eye shimmer and crimson lips',
-    image_url: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=900&q=80',
+    caption: 'Bespoke South Indian bridal glam with uncut diamond temple jewelry and glowing HD finish',
+    image_url: '/hero-bride-portrait.jpg',
     is_featured: 1
   },
   {
     id: 2,
-    title: 'Contemporary Sangeet Look',
+    title: 'Joyous Sangeet Radiance',
     category: 'Bridal Looks',
-    caption: 'Modern pastel bridal makeup with soft champagne halo eyeshadow',
-    image_url: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=900&q=80',
+    caption: 'Festive bridal celebration in regal magenta attire with sweat-resistant longwear finish',
+    image_url: '/hero-bride-dance.png',
     is_featured: 1
   },
   {
     id: 3,
+    title: 'Haute Atelier Vanity',
+    category: 'Transformations',
+    caption: 'Curated vanity of authentic dermatologist-tested international luxury makeup',
+    image_url: '/hero-makeup-cosmetics.jpg',
+    is_featured: 1
+  },
+  {
+    id: 4,
+    title: 'Artisan Powder Burst',
+    category: 'Transformations',
+    caption: 'Micro-milled HD powder and airbrush sculpting for weightless all-day radiance',
+    image_url: '/hero-brush-powder.jpg',
+    is_featured: 1
+  },
+  {
+    id: 5,
     title: 'Dewy Reception Glam',
     category: 'Reception & Party',
     caption: 'Soft rose gold cut-crease with glass-skin finish and glossy nude lips',
@@ -25,15 +41,7 @@ export const DEFAULT_GALLERY = [
     is_featured: 1
   },
   {
-    id: 4,
-    title: 'Evening Cocktail Smoky Eye',
-    category: 'Reception & Party',
-    caption: 'Sultry velvet plum smoky eye with micro-glitter and sculpted cheeks',
-    image_url: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80',
-    is_featured: 1
-  },
-  {
-    id: 5,
+    id: 6,
     title: 'Jeweled Poola Jada Artistry',
     category: 'Hairstyling',
     caption: 'Intricate floral braid adornment with antique gold temple brooches',
@@ -41,7 +49,7 @@ export const DEFAULT_GALLERY = [
     is_featured: 1
   },
   {
-    id: 6,
+    id: 7,
     title: 'Textured Romantic Updo',
     category: 'Hairstyling',
     caption: 'Boho floral bun with delicate framing tendrils for outdoor weddings',
@@ -49,19 +57,11 @@ export const DEFAULT_GALLERY = [
     is_featured: 0
   },
   {
-    id: 7,
+    id: 8,
     title: 'Radiant Skin Transformation',
     category: 'Transformations',
     caption: 'Bespoke color correction and airbrush coverage celebrating natural bone structure',
     image_url: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80',
     is_featured: 1
-  },
-  {
-    id: 8,
-    title: 'Traditional Kasavu Saree Elegance',
-    category: 'Bridal Looks',
-    caption: 'Minimalist Kerala bridal look with winged liner and fresh jasmine flowers',
-    image_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80',
-    is_featured: 0
   }
 ];
