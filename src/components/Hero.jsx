@@ -196,53 +196,57 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
             CENTER COLUMN: OVAL ARCHED FRAME WITH GOLDEN ORBITS & AUTO-SLIDER
             ============================================================== */}
         <div className="hero-center-column">
-          {/* Outer Golden Orbital Ring 1 (Tilted Celestial Ring) */}
-          <div className="golden-orbit-ring ring-primary" />
+          {/* Frame Wrapper to guarantee exact solid dimensions on every phone screen */}
+          <div className="hero-frame-wrapper">
+            {/* Outer Golden Orbital Ring 1 (Tilted Celestial Ring) */}
+            <div className="golden-orbit-ring ring-primary" />
 
-          {/* Secondary Golden Halo Ring 2 */}
-          <div className="golden-orbit-ring ring-secondary" />
+            {/* Secondary Golden Halo Ring 2 */}
+            <div className="golden-orbit-ring ring-secondary" />
 
-          {/* Arched / Oval Portrait Frame */}
-          <div className="hero-oval-frame">
-            {/* Uploaded Bridal Images in Smooth Ken Burns Crossfade Slider */}
-            {BRIDAL_SLIDES.map((slide, idx) => {
-              const isActive = idx === currentSlide;
-              return (
-                <div
-                  key={slide.id}
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: isActive ? 1 : 0,
-                    transform: isActive ? 'scale(1.04)' : 'scale(1)',
-                    transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 4s ease-out',
-                    pointerEvents: isActive ? 'auto' : 'none'
-                  }}
-                >
-                  <img
-                    src={slide.image}
-                    alt={slide.alt}
+            {/* Arched / Oval Portrait Frame */}
+            <div className="hero-oval-frame">
+              {/* Uploaded Bridal Images in Smooth Ken Burns Crossfade Slider */}
+              {BRIDAL_SLIDES.map((slide, idx) => {
+                const isActive = idx === currentSlide;
+                return (
+                  <div
+                    key={slide.id}
+                    className="hero-slide-pane"
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: slide.objectPosition
+                      position: 'absolute',
+                      inset: 0,
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                      transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 4s ease-out',
+                      pointerEvents: isActive ? 'auto' : 'none'
                     }}
-                  />
-                </div>
-              );
-            })}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: slide.objectPosition
+                      }}
+                    />
+                  </div>
+                );
+              })}
 
-            {/* Subtle Radiant Vignette Overlay */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'radial-gradient(ellipse at center, transparent 65%, rgba(100, 30, 45, 0.12) 100%)',
-                pointerEvents: 'none',
-                zIndex: 4
-              }}
-            />
+              {/* Subtle Radiant Vignette Overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'radial-gradient(ellipse at center, transparent 65%, rgba(100, 30, 45, 0.12) 100%)',
+                  pointerEvents: 'none',
+                  zIndex: 4
+                }}
+              />
+            </div>
           </div>
 
           {/* Discrete Manual Slider Indicator Dots */}
@@ -254,15 +258,22 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
                   key={slide.id}
                   onClick={() => handleManualSlide(idx)}
                   aria-label={`Switch to slide ${idx + 1}: ${slide.label}`}
+                  className="hero-dot-btn"
                   style={{
                     width: isActive ? '28px' : '8px',
                     height: '8px',
-                    borderRadius: isActive ? '4px' : '50%',
+                    minWidth: isActive ? '28px' : '8px',
+                    maxWidth: isActive ? '28px' : '8px',
+                    minHeight: '8px',
+                    maxHeight: '8px',
+                    borderRadius: '4px',
                     background: isActive ? '#6B1728' : 'rgba(183, 110, 121, 0.45)',
                     transition: 'all 0.35s cubic-bezier(0.25, 1, 0.5, 1)',
                     border: 'none',
                     cursor: 'pointer',
-                    padding: 0
+                    padding: 0,
+                    display: 'block',
+                    flexShrink: 0
                   }}
                   title={slide.label}
                 />
@@ -467,14 +478,28 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
           box-shadow: none !important;
         }
 
-        /* Center Column & Oval Frame */
+        /* Center Column & Fixed Dimensions Frame Wrapper */
         .hero-center-column {
           position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
           justifyContent: center;
+          width: 100%;
+          max-width: 360px;
+          margin: 0 auto;
           z-index: 6;
+        }
+
+        .hero-frame-wrapper {
+          position: relative;
+          width: 340px;
+          height: 470px;
+          display: flex;
+          align-items: center;
+          justifyContent: center;
+          flex-shrink: 0;
+          margin: 0 auto;
         }
 
         .golden-orbit-ring {
@@ -485,44 +510,48 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
         }
 
         .golden-orbit-ring.ring-primary {
-          width: 122%;
-          height: 112%;
-          top: -6%;
-          left: -11%;
+          inset: -14px;
           border: 1.5px solid rgba(212, 175, 122, 0.75);
           box-shadow: 0 0 25px rgba(212, 175, 122, 0.35);
           transform: rotate(-10deg);
         }
 
         .golden-orbit-ring.ring-secondary {
-          width: 132%;
-          height: 118%;
-          top: -9%;
-          left: -16%;
+          inset: -24px -22px;
           border: 1px dashed rgba(212, 175, 122, 0.4);
           transform: rotate(14deg);
         }
 
         .hero-oval-frame {
           position: relative;
-          width: 100%;
-          max-width: 360px;
-          height: 475px;
+          width: 340px;
+          height: 470px;
           border-radius: 240px 240px 220px 220px;
           border: 4.5px solid #FFFFFF;
           box-shadow: 0 22px 55px rgba(100, 30, 45, 0.22), 0 6px 18px rgba(0, 0, 0, 0.08);
           overflow: hidden;
           background-color: #FFFFFF;
           z-index: 3;
+          flex-shrink: 0;
         }
 
         .hero-slider-dots {
-          display: flex;
-          align-items: center;
-          justifyContent: center;
-          gap: 0.55rem;
-          margin-top: 1rem;
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 0.55rem !important;
+          margin-top: 1rem !important;
+          height: 14px !important;
           z-index: 10;
+        }
+
+        .hero-dot-btn {
+          height: 8px !important;
+          min-height: 8px !important;
+          max-height: 8px !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box !important;
         }
 
         /* Right Column */
@@ -625,7 +654,7 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
           box-shadow: 0 4px 12px rgba(116, 29, 46, 0.08);
           display: flex;
           align-items: center;
-          justify-content: center;
+          justifyContent: center;
           color: #741d2e;
           flex-shrink: 0;
         }
@@ -712,7 +741,20 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
 
           .hero-center-column {
             order: 2 !important;
+            width: 100% !important;
+            max-width: 320px !important;
             margin: 0.5rem auto !important;
+          }
+
+          .hero-frame-wrapper {
+            width: 300px !important;
+            height: 410px !important;
+          }
+
+          .hero-oval-frame {
+            width: 300px !important;
+            height: 410px !important;
+            border-radius: 210px 210px 190px 190px !important;
           }
 
           .hero-right-column {
@@ -792,25 +834,31 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
             margin-bottom: 0.75rem !important;
           }
 
+          /* SOLID, CLEAR, PROPERLY SIZED OVAL FRAME ON PHONE */
+          .hero-center-column {
+            width: 100% !important;
+            max-width: 300px !important;
+            margin: 0.5rem auto !important;
+          }
+
+          .hero-frame-wrapper {
+            width: 280px !important;
+            height: 380px !important;
+          }
+
           .hero-oval-frame {
-            max-width: 280px !important;
-            height: 370px !important;
-            border-radius: 200px 200px 180px 180px !important;
+            width: 280px !important;
+            height: 380px !important;
+            border-radius: 190px 190px 170px 170px !important;
             border-width: 4px !important;
           }
 
           .golden-orbit-ring.ring-primary {
-            width: 114% !important;
-            height: 108% !important;
-            top: -4% !important;
-            left: -7% !important;
+            inset: -10px !important;
           }
 
           .golden-orbit-ring.ring-secondary {
-            width: 122% !important;
-            height: 112% !important;
-            top: -6% !important;
-            left: -11% !important;
+            inset: -18px -16px !important;
           }
 
           .hero-calligraphy-wrap img {
@@ -886,20 +934,27 @@ export default function Hero({ openBookingModal, setCurrentView, settings }) {
             font-size: 1.95rem !important;
           }
 
-          .hero-oval-frame {
-            max-width: 245px !important;
+          .hero-center-column {
+            max-width: 260px !important;
+          }
+
+          .hero-frame-wrapper {
+            width: 240px !important;
             height: 330px !important;
-            border-radius: 180px 180px 160px 160px !important;
+          }
+
+          .hero-oval-frame {
+            width: 240px !important;
+            height: 330px !important;
+            border-radius: 170px 170px 150px 150px !important;
           }
 
           .golden-orbit-ring.ring-primary {
-            width: 110% !important;
-            left: -5% !important;
+            inset: -8px !important;
           }
 
           .golden-orbit-ring.ring-secondary {
-            width: 118% !important;
-            left: -9% !important;
+            inset: -14px -12px !important;
           }
 
           .hero-calligraphy-wrap img {

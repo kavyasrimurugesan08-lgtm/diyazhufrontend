@@ -328,27 +328,6 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
               >
                 <InstagramIcon size={19} color="#6B1728" />
               </a>
-
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp 9003979277"
-                title="Chat on WhatsApp (9003979277)"
-                className="social-icon-btn whatsapp-nav-btn"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  color: '#6B1728',
-                  transition: 'transform 0.2s ease, opacity 0.2s ease, color 0.2s ease'
-                }}
-              >
-                <WhatsAppIcon size={19} color="#6B1728" />
-              </a>
             </div>
 
             {/* Quick Admin Access Keyhole */}
@@ -375,33 +354,9 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
           </div>
 
           {/* ==============================================================
-              MOBILE CONTROLS: WhatsApp, Book & Hamburger Toggle
+              MOBILE CONTROLS: Book & Hamburger Toggle
               ============================================================== */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }} className="mobile-nav-toggle">
-            {/* Quick WhatsApp Tap on Mobile */}
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp Chat 9003979277"
-              className="mobile-whatsapp-btn"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '34px',
-                height: '34px',
-                borderRadius: '50%',
-                background: 'rgba(37, 211, 102, 0.12)',
-                color: '#25D366',
-                border: '1px solid rgba(37, 211, 102, 0.35)',
-                textDecoration: 'none'
-              }}
-              title="Chat on WhatsApp"
-            >
-              <WhatsAppIcon size={18} color="#25D366" />
-            </a>
-
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }} className="mobile-nav-toggle">
             {/* Quick Book Button on Mobile */}
             <button
               onClick={() => openBookingModal()}
@@ -505,7 +460,6 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginTop: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: '#8E5D67' }}>Connect:</span>
             <a href={instagramUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#6B1728' }} title="Instagram"><InstagramIcon size={20} /></a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#6B1728' }} title="WhatsApp (9003979277)"><WhatsAppIcon size={20} /></a>
           </div>
 
           <div style={{ marginTop: 'auto', paddingTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -658,10 +612,6 @@ export default function Navbar({ currentView, setCurrentView, openBookingModal, 
             width: 32px !important;
             height: 32px !important;
             justify-content: center !important;
-          }
-          .mobile-whatsapp-btn {
-            width: 32px !important;
-            height: 32px !important;
           }
         }
       `}</style>

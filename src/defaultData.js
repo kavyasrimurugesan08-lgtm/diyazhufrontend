@@ -37,7 +37,7 @@ export const DEFAULT_GALLERY = [
     title: 'Dewy Reception Glam',
     category: 'Reception & Party',
     caption: 'Soft rose gold cut-crease with glass-skin finish and glossy nude lips',
-    image_url: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80',
+    image_url: '/gallery-reception-glam.jpg',
     is_featured: 1
   },
   {
@@ -45,7 +45,7 @@ export const DEFAULT_GALLERY = [
     title: 'Jeweled Poola Jada Artistry',
     category: 'Hairstyling',
     caption: 'Intricate floral braid adornment with antique gold temple brooches',
-    image_url: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80',
+    image_url: '/gallery-poola-jada.jpg',
     is_featured: 1
   },
   {

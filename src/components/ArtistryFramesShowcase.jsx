@@ -68,7 +68,7 @@ export default function ArtistryFramesShowcase({ openBookingModal, onOpenLightbo
       tag: 'Haute Atelier Kits',
       title: 'Luxury Cosmetics on Silk',
       subtitle: 'Genuine International Formulations',
-      desc: 'Curated vanity of dermatologist-approved luxury brands including Charlotte Tilbury, Dior, NARS & Huda Beauty.',
+      desc: 'Curated vanity of authentic bridal cosmetics including Maybelline Fit Me, Swiss Beauty & Nykaa on peach silk.',
       frameStyle: 'silk-bevel',
       accentColor: '#dfb78c',
       badge: 'Certified Luxury'
